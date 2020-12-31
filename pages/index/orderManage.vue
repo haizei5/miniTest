@@ -1,17 +1,19 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+	<!-- 自定义导航栏 -->
+	<header>
+		<view>
+			<u-navbar :is-back="false" title="订单管理">
+				<text class="iconfont icon-user"></text>
+			</u-navbar>
 		</view>
-	</view>
+	</header>
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello11'
 			}
 		},
 		onLoad() {
