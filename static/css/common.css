@@ -35,26 +35,19 @@
     -ms-flex-align: center;
     align-items: center;
 }
-/* 子元素垂直居中 */
-.flex-align-center {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+/* 子元素垂直靠左 */
+.flex-align-left {
+    -webkit-box-align: align;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: align;
+    align-items: flex-start;
 }
-/* 子元素垂直居中 */
+/* 子元素垂直靠右 */
 .flex-align-center {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-/* 子元素垂直居中 */
-.flex-align-center {
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+    -webkit-box-align: align;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: align;
+    align-items: flex-end;
 }
 /* 子元素水平居中 */
 .flex-pack-center {
@@ -83,6 +76,15 @@
     -webkit-justify-content: space-around;
     -ms-flex-pack: justify;
     justify-content: space-around;
+}
+/*flex-wrap 属性用于指定弹性盒子的子元素换行方式。*/
+.fw-nw {flex-wrap:nowrap;} /*默认， 弹性容器为单行。该情况下弹性子项可能会溢出容器。*/
+.fw-w {flex-wrap:wrap ;}
+.fw-nw {flex-wrap:wrap-reverse;} /*反转 wrap 排列。*/
+
+*{
+	margin:0;
+	padding:0;
 }
 
 
