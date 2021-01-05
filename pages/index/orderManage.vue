@@ -1,22 +1,15 @@
 <template>
 	<!-- 自定义导航栏 -->
 	<view class="container">
-		<head>
+		<view class="navOne" data-id="navOne">
 			<u-navbar :is-back="false" title="订单管理" titleBold="true" title-color="#000">
 				<view class="slot-icon flex flex-align-center">
 					<text class="iconfont icon-user icon-size" @click="slotUser"></text>
 				</view>
 			</u-navbar>
-			<view class="u-content">
-				<u-sticky :offset-top="offsetTop" h5-nav-height="44">
-					<view class="tab-bar" id="tabBar">
-						<u-tabs ref="uTabs" active-color="#0091FF" inactive-color="#3B426B" :is-scroll="false" :list='list' @change="tabsChange"
-						 :current="current"></u-tabs>
-					</view>
-				</u-sticky>
-			</view>
-		</head>
-		<section class="contentBg" style="height: 1500rpx;">
+		</view>
+		<navTabs :menutop="menutop" :list="navList" @setCurrent="getCurrent"></navTabs>
+		<view class="contentBg" style="height: 1500rpx;">
 			<swiper :current="current">
 				<swiper-item v-for="(item,index) in tabs" :key="index">
 					<view>
@@ -24,16 +17,16 @@
 					</view>
 				</swiper-item>
 			</swiper>
-		</section>
+		</view>
 	</view>
-
 </template>
 
 <script>
+	import navTabs from '../components/twoLevelNav.vue'
 	export default {
 		data() {
 			return {
-				list: [{
+				navList: [{
 					name: '全部',
 					itemwidth: "60",
 				}, {
@@ -44,11 +37,12 @@
 				}, {
 					name: '争议订单'
 				}],
+				rect: '', //页面滚动距离
+				menutop: '', //组件距离顶部的距离
+				height:'65',
 				// 因为内部的滑动机制限制，请将tabs组件和swiper组件的current用不同变量赋值
 				current: 0, // tabs组件的current值，表示当前活动的tab选项
-				swiperCurrent: 0, // swiper组件的current值，表示当前那个swiper-item是活动的
-				offsetTop: 0, //吸附顶部是的间距
-				tabBarTop: 0,
+				FixedVal: false,
 				tabs: [{
 					content: 'tab0'
 				}, {
@@ -60,55 +54,53 @@
 				}]
 			}
 		},
-		onLoad() {
-
+		components:{
+			navTabs
 		},
-		onShow() {
-			this.setOffestTop()
+		computed: {
+		},
+		onLoad() {
+			this.initNavTop();
+		},
+		onShow() {},
+		// 监听页面滚动距离-生命周期
+		onPageScroll(e) {
+			console.log(e)
+			this.rect = e.scrollTop;
 		},
 		mounted() {
-			uni.createSelectorQuery().in(this).select('#tabBar').boundingClientRect(res => {
-				this.tabBarTop = res.top
-			}).exec()
 		},
 		methods: {
+			initNavTop(){
+				let viewHe = uni.createSelectorQuery().select('.navOne');
+				viewHe.boundingClientRect(res=>{
+					this.menutop = res.height
+				}).exec()
+				
+			},
 			slotUser() {
 				console.log("个人中心");
 			},
-			tabsChange(idx) {
+			getCurrent(idx) {
 				this.current = idx;
-				uni.createSelectorQuery().selectViewport().scrollOffset(res => {
-					uni.pageScrollTo({
-						scrollTop: this.tabBarTop,
-						duration: 300
-					})
-				}).exec()
 			},
-			setOffestTop() {
-				let systemInfo = uni.getSystemInfoSync();
-				let topPx = systemInfo.statusBarHeight + 44; //顶部状态栏+沉浸式自定义顶部导航
-				this.offsetTop = topPx / (uni.upx2px(topPx) / topPx) //px转为rpx
-			},
-
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.container {
+		width:100%;
+		margin: 0;
+		padding: 0;
 		.slot-icon {
 			padding: 0 30rpx;
-
 			.icon-size {
 				font-size: 50rpx !important;
 			}
 		}
-	
-			
-
 		.contentBg {
 			background: #F5F5F5;
 		}
-
 	}
 </style>
