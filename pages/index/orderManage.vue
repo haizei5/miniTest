@@ -12,9 +12,14 @@
 		<view class="contentBg" style="height: 1500rpx;">
 			<swiper :current="current">
 				<swiper-item v-for="(item,index) in tabs" :key="index">
-					<view>
-						{{item.content}}
-					</view>
+					<u-card :title="item.status" title-color="#F26B0B">
+						<view>
+							
+						</view>
+						<view>
+							
+						</view>
+					</u-card>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -44,13 +49,37 @@
 				current: 0, // tabs组件的current值，表示当前活动的tab选项
 				FixedVal: false,
 				tabs: [{
-					content: 'tab0'
+					status: '进行中',
+					price:"2600",
+					poName:"炮兵甲",
+					orderTime:"2020-09-28 15:00",
+					address:"声学所住宅楼小区",
+					description:"河北省张家口招4个小工，工资日结，需要.......",
+					workTime:"一周左右",
 				}, {
-					content: 'tab1'
+					status: '进行中',
+					price:"2600",
+					poName:"炮兵甲",
+					orderTime:"2020-09-28 15:00",
+					address:"声学所住宅楼小区",
+					description:"河北省张家口招4个小工，工资日结，需要.......",
+					workTime:"一周左右",
 				}, {
-					content: 'tab2'
+					status: '进行中',
+					price:"2600",
+					poName:"炮兵甲",
+					orderTime:"2020-09-28 15:00",
+					address:"声学所住宅楼小区",
+					description:"河北省张家口招4个小工，工资日结，需要.......",
+					workTime:"一周左右",
 				}, {
-					content: 'tab3'
+					status: '进行中',
+					price:"2600",
+					poName:"炮兵甲",
+					orderTime:"2020-09-28 15:00",
+					address:"声学所住宅楼小区",
+					description:"河北省张家口招4个小工，工资日结，需要.......",
+					workTime:"一周左右",
 				}]
 			}
 		},
@@ -65,7 +94,6 @@
 		onShow() {},
 		// 监听页面滚动距离-生命周期
 		onPageScroll(e) {
-			console.log(e)
 			this.rect = e.scrollTop;
 		},
 		mounted() {

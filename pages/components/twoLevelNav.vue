@@ -2,7 +2,7 @@
 <template>
 	<view class="navTab" id="tabBers" :style="{top:`${menutop}px`}">
 		<view class="main-title" ref="operationRef" data-id="operationRef">
-			<u-tabs ref="uTabs" active-color="#333333" inactive-color="#3B426B" :is-scroll="false" :list='list' @change="tabsChange"
+			<u-tabs ref="uTabs" active-color="#0091FF" inactive-color="#3B426B" :is-scroll="false" :list='list' @change="tabsChange"
 			 :current="current"></u-tabs>
 		</view>
 	</view>
