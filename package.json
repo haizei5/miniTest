@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/haizei5/miniTest#readme",
   "dependencies": {
+    "@vant/weapp": "^1.6.4",
     "uview-ui": "^1.8.3"
   }
 }

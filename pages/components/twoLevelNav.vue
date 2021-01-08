@@ -10,27 +10,23 @@
 
 <script>
 	export default {
-		props:['list','menutop'],
+		props: ['list', 'menutop'],
 		data() {
 			return {
 				// 因为内部的滑动机制限制，请将tabs组件和swiper组件的current用不同变量赋值
 				current: 0, // tabs组件的current值，表示当前活动的tab选项
 			}
 		},
-		computed: {
-		},
-		onLoad() {
-		},
+		computed: {},
+		onLoad() {},
 		onShow() {},
 		// 监听页面滚动距离-生命周期
-		onPageScroll(e) {
-		},
-		mounted() {
-		},
+		onPageScroll(e) {},
+		mounted() {},
 		methods: {
 			tabsChange(idx) {
 				this.current = idx;
-				this.$emit('setCurrent',this.current);
+				this.$emit('setCurrent', this.current);
 			},
 		}
 	}
@@ -38,12 +34,14 @@
 
 <style lang="scss" scoped>
 	.navTab {
+		// display: flex;
 		width: 100%;
+		left: 0;
+		right: 0;
 		position: -webkit-sticky;
 		position: -moz-sticky;
 		position: -ms-sticky;
 		position: sticky;
-		top: var(--window-top);
 		z-index: 99;
 	}
 </style>

@@ -18,4 +18,7 @@
 	@import "uview-ui/index.scss";
 	@import url("./static/css/common.css");
 	@import url("./static/font/iconfont.css");
+	page{
+		height: 100%;
+	}
 </style>
